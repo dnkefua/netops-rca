@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Server
 } from 'lucide-react';
+import ThreeDLogo from './ThreeDLogo';
 
 interface SidebarProps {
   activeSection: string;
@@ -35,10 +36,12 @@ export default function Sidebar({ activeSection, setActiveSection, onSelectRepor
   return (
     <aside id="sidebar-container" className="w-64 bg-slate-900 border-r border-slate-800 text-slate-300 flex flex-col h-full shrink-0 select-none">
       {/* Brand Header */}
-      <div id="sidebar-brand-section" className="h-16 flex items-center px-6 gap-3 border-b border-slate-800 shrink-0">
-        <div id="brand-icon-wrapper" className="p-1.5 bg-blue-600 rounded-lg text-white">
-          <Server id="brand-network-icon" className="w-5 h-5" />
-        </div>
+      <div 
+        id="sidebar-brand-section" 
+        onClick={() => setActiveSection('landing')}
+        className="h-16 flex items-center px-4.5 gap-3 border-b border-slate-800 shrink-0 cursor-pointer hover:bg-slate-800/40 transition-colors"
+      >
+        <ThreeDLogo size="md" />
         <div id="brand-text-wrapper" className="flex flex-col">
           <span id="brand-title" className="font-sans font-bold text-slate-100 tracking-tight text-base leading-none">NetOps RCA</span>
           <span id="brand-subtitle" className="font-mono text-[10px] text-blue-400 mt-1 uppercase tracking-wider font-semibold">Quality Engine v2.4</span>

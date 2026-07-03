@@ -6,6 +6,7 @@ import IncidentsView from './components/IncidentsView';
 import NewRCAView from './components/NewRCAView';
 import WorkspaceView from './components/WorkspaceView';
 import ReportsView from './components/ReportsView';
+import LandingView from './components/LandingView';
 
 import { 
   INITIAL_INCIDENTS, 
@@ -17,7 +18,7 @@ import { Incident, CAPAAction, RCAWorkspace, WhyStep } from './types';
 
 export default function App() {
   // Navigation Section
-  const [activeSection, setActiveSection] = useState<string>('dashboard');
+  const [activeSection, setActiveSection] = useState<string>('landing');
   
   // State variables synchronized from localStorage if present
   const [incidents, setIncidents] = useState<Incident[]>([]);
@@ -132,6 +133,10 @@ export default function App() {
     }
     setActiveSection('workspace');
   };
+
+  if (activeSection === 'landing') {
+    return <LandingView onLaunchConsole={() => setActiveSection('dashboard')} />;
+  }
 
   return (
     <div id="application-root-container" className="flex h-screen w-screen overflow-hidden bg-slate-100 text-slate-800">
