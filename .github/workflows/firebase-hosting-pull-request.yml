@@ -32,8 +32,5 @@ jobs:
           npm run build
 
       - name: Deploy to Firebase Hosting (Preview)
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ''
-          projectId: netops-rca
+        run: |
+          npx firebase-tools hosting:channel:deploy --project netops-rca pr-${{ github.event.pull_request.number }}
